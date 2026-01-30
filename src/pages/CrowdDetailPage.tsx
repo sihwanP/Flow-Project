@@ -342,7 +342,7 @@ export default function CrowdDetailPage() {
         </div>
       </header>
 
-      <main className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8">
+      <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 py-6 md:py-8">
         {/* 실시간 표시 (모바일) */}
         <FadeInSection className="md:hidden mb-6">
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-2xl text-center">
@@ -354,28 +354,28 @@ export default function CrowdDetailPage() {
         {/* 통계 카드 - Merge 애니메이션 적용 */}
         <MergeCardGrid columns={5} className="mb-8">
           <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-lg p-3 sm:p-4 border-2 border-red-200 dark:border-red-900/30 transition-colors text-center">
-            <p className="text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">매우혼잡</p>
-            <p className="text-2xl sm:text-3xl font-black text-red-600 dark:text-red-400">{stats.veryBusy}</p>
+            <p className="text-[10px] md:text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">매우혼잡</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-red-600 dark:text-red-400">{stats.veryBusy}</p>
             <p className="text-[10px] text-slate-800 dark:text-slate-200 font-black">개 지역</p>
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-3 sm:p-4 border-2 border-pink-200 dark:border-pink-900/30 transition-colors text-center">
-            <p className="text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">혼잡</p>
-            <p className="text-2xl sm:text-3xl font-black text-pink-600 dark:text-pink-400">{stats.busy}</p>
+            <p className="text-[10px] md:text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">혼잡</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-pink-600 dark:text-pink-400">{stats.busy}</p>
             <p className="text-[10px] text-slate-800 dark:text-slate-200 font-black">개 지역</p>
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-3 sm:p-4 border-2 border-orange-200 dark:border-orange-900/30 transition-colors text-center">
-            <p className="text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">보통</p>
-            <p className="text-2xl sm:text-3xl font-black text-orange-600 dark:text-orange-400">{stats.normal}</p>
+            <p className="text-[10px] md:text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">보통</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-orange-600 dark:text-orange-400">{stats.normal}</p>
             <p className="text-[10px] text-slate-800 dark:text-slate-200 font-black">개 지역</p>
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-3 sm:p-4 border-2 border-green-200 dark:border-green-900/30 transition-colors text-center">
-            <p className="text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">여유</p>
-            <p className="text-2xl sm:text-3xl font-black text-green-600 dark:text-green-400">{stats.free}</p>
+            <p className="text-[10px] md:text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">여유</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-green-600 dark:text-green-400">{stats.free}</p>
             <p className="text-[10px] text-slate-800 dark:text-slate-200 font-black">개 지역</p>
           </div>
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-3 sm:p-4 border-2 border-indigo-200 dark:border-indigo-900/30 transition-colors text-center">
-            <p className="text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">전국 평균</p>
-            <p className="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400">{stats.avgPopulation.toLocaleString()}</p>
+            <p className="text-[10px] md:text-xs text-slate-900 dark:text-slate-100 mb-1 font-black">전국 평균</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-indigo-600 dark:text-indigo-400">{stats.avgPopulation.toLocaleString()}</p>
             <p className="text-[10px] text-slate-800 dark:text-slate-200 font-black">명</p>
           </div>
         </MergeCardGrid>
@@ -406,7 +406,7 @@ export default function CrowdDetailPage() {
                   }
                 });
               }}
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 md:px-10 py-4 rounded-full font-bold text-base md:text-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg whitespace-nowrap"
             >
               검색
             </button>

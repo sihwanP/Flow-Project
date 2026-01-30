@@ -322,7 +322,7 @@ export default function SmokingBoothDetailPage() {
         </div>
       </header>
 
-      <main className="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-8">
+      <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 py-6 md:py-8">
         {/* 실시간 표시 (모바일) */}
         <FadeInSection className="md:hidden mb-6">
           <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-4 rounded-2xl text-center">
@@ -333,25 +333,25 @@ export default function SmokingBoothDetailPage() {
 
         {/* 통계 카드 - Merge 애니메이션 적용 */}
         <MergeCardGrid columns={4} className="mb-8">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 border-2 border-green-200 dark:border-green-900/30 transition-colors">
-            <p className="text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 500m</p>
-            <p className="text-4xl font-black text-green-600 dark:text-green-400">{stats.within500m}</p>
-            <p className="text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6 border-2 border-green-200 dark:border-green-900/30 transition-colors">
+            <p className="text-xs md:text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 500m</p>
+            <p className="text-3xl md:text-4xl font-black text-green-600 dark:text-green-400">{stats.within500m}</p>
+            <p className="text-[10px] md:text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 border-2 border-emerald-200 dark:border-emerald-900/30 transition-colors">
-            <p className="text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 1km</p>
-            <p className="text-4xl font-black text-emerald-600 dark:text-emerald-400">{stats.within1km}</p>
-            <p className="text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6 border-2 border-emerald-200 dark:border-emerald-900/30 transition-colors">
+            <p className="text-xs md:text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 1km</p>
+            <p className="text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-400">{stats.within1km}</p>
+            <p className="text-[10px] md:text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 border-2 border-teal-200 dark:border-teal-900/30 transition-colors">
-            <p className="text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 2km</p>
-            <p className="text-4xl font-black text-teal-600 dark:text-teal-400">{stats.within2km}</p>
-            <p className="text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6 border-2 border-teal-200 dark:border-teal-900/30 transition-colors">
+            <p className="text-xs md:text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">반경 2km</p>
+            <p className="text-3xl md:text-4xl font-black text-teal-600 dark:text-teal-400">{stats.within2km}</p>
+            <p className="text-[10px] md:text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 border-2 border-blue-200 dark:border-blue-900/30 transition-colors">
-            <p className="text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">전국 총</p>
-            <p className="text-4xl font-black text-blue-600 dark:text-blue-400">{stats.total}</p>
-            <p className="text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6 border-2 border-blue-200 dark:border-blue-900/30 transition-colors">
+            <p className="text-xs md:text-sm text-slate-900 dark:text-slate-100 mb-1 font-black">전국 총</p>
+            <p className="text-3xl md:text-4xl font-black text-blue-600 dark:text-blue-400">{stats.total}</p>
+            <p className="text-[10px] md:text-xs text-slate-800 dark:text-slate-200 font-black">개의 흡연부스</p>
           </div>
         </MergeCardGrid>
 
@@ -367,7 +367,7 @@ export default function SmokingBoothDetailPage() {
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg"
+              className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 md:px-10 py-4 rounded-full font-bold text-base md:text-lg hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg whitespace-nowrap"
             >
               검색
             </button>
@@ -477,7 +477,7 @@ export default function SmokingBoothDetailPage() {
                     흡연 구역을 피해서 이동하고 싶으신가요? 아래 기능을 활용해보세요.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 flex flex-col justify-center min-h-[180px] transition-transform hover:scale-[1.02] cursor-default">
                     <h4 className="font-black text-2xl mb-3 tracking-tight">실시간 위치 확인</h4>
                     <p className="text-lg opacity-90 leading-relaxed tracking-tight text-white/95">
@@ -514,15 +514,15 @@ export default function SmokingBoothDetailPage() {
                       }}
                       className={`p-4 border-b border-gray-100 dark:border-slate-800 cursor-pointer transition-all hover:bg-green-50 dark:hover:bg-green-900/20 ${selectedBooth?.id === booth.id ? "bg-green-100 dark:bg-green-900/40" : "bg-white dark:bg-slate-900"}`}
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold text-sm md:text-base">
                           {index + 1}
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-black text-slate-900 dark:text-white">{booth.name}</h4>
-                          <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 font-bold">{booth.address}</p>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-black text-slate-900 dark:text-white truncate">{booth.name}</h4>
+                          <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 font-bold truncate">{booth.address}</p>
                         </div>
-                        <div className="text-sm font-black text-green-600 dark:text-green-400">
+                        <div className="text-xs md:text-sm font-black text-green-600 dark:text-green-400 whitespace-nowrap">
                           {formatDistance(booth.distance)}
                         </div>
                       </div>
@@ -581,8 +581,8 @@ export default function SmokingBoothDetailPage() {
           <div className="mt-8 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl p-8 border-2 border-green-200 dark:border-green-900/30 transition-colors">
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h3 className="text-3xl font-black text-gray-900 dark:text-white">{selectedBooth.name}</h3>
-                <p className="text-lg text-gray-800 dark:text-gray-300 font-bold">{selectedBooth.address}</p>
+                <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">{selectedBooth.name}</h3>
+                <p className="text-base md:text-lg text-gray-800 dark:text-gray-300 font-bold mt-1">{selectedBooth.address}</p>
               </div>
               <button
                 onClick={() => setSelectedBooth(null)}
