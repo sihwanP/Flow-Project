@@ -5,10 +5,6 @@ import {
   generateLocationData, 
   getLevelColor 
 } from "../services/crowdDataService";
-import type { 
-  LocationCrowdData, 
-  HourlyData 
-} from "../services/crowdDataService";
 
 declare global {
   interface Window {

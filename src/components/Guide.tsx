@@ -28,7 +28,7 @@ export default function Guide({ }: GuideProps) {
           <h2 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-black text-slate-900 dark:text-white drop-shadow-2xl">
             서비스 가이드
           </h2>
-          <p className="text-base xs:text-lg md:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl text-slate-800 dark:text-slate-200 drop-shadow-lg max-w-3xl 3xl:max-w-4xl 4xl:max-w-6xl 5xl:max-w-[80rem] text-center leading-relaxed font-medium">
+          <p className="text-base xs:text-lg md:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl text-slate-900 dark:text-white drop-shadow-lg max-w-3xl 3xl:max-w-4xl 4xl:max-w-6xl 5xl:max-w-[80rem] text-center leading-relaxed font-black">
             Flow 서비스는 흡연부스 위치 안내, 실시간 혼잡도 모니터링,<br />
             그리고 건강한 산책 코스를 제공합니다
           </p>
@@ -96,7 +96,7 @@ export default function Guide({ }: GuideProps) {
                 />
               </div>
               <h3 className="text-2xl 4xl:text-4xl 5xl:text-5xl font-black mb-4 4xl:mb-8 text-center text-slate-900 dark:text-white drop-shadow-sm">위치 서비스</h3>
-              <p className="text-slate-800 dark:text-slate-200 text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-medium">
+              <p className="text-slate-900 dark:text-white text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-black">
                 전국 300개 이상의 흡연부스 위치를 실시간으로 확인하고 가장 가까운 곳을 찾아보세요
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function Guide({ }: GuideProps) {
                 />
               </div>
               <h3 className="text-2xl 4xl:text-4xl 5xl:text-5xl font-black mb-4 4xl:mb-8 text-center text-slate-900 dark:text-white drop-shadow-sm">혼잡도 모니터링</h3>
-              <p className="text-slate-800 dark:text-slate-200 text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-medium">
+              <p className="text-slate-900 dark:text-white text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-black">
                 전국 주요 지역의 실시간 인구 밀집도를 확인하고 최적의 방문 시간을 계획하세요
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function Guide({ }: GuideProps) {
                 />
               </div>
               <h3 className="text-2xl 4xl:text-4xl 5xl:text-5xl font-black mb-4 4xl:mb-8 text-center text-slate-900 dark:text-white drop-shadow-sm">산책 코스 추천</h3>
-              <p className="text-slate-800 dark:text-slate-200 text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-medium">
+              <p className="text-slate-900 dark:text-white text-base md:text-lg 4xl:text-2xl 5xl:text-3xl text-center leading-relaxed font-black">
                 건강하고 쾌적한 산책 코스를 추천받아 여유로운 시간을 보내세요
               </p>
             </div>

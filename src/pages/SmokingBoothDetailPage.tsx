@@ -547,29 +547,29 @@ export default function SmokingBoothDetailPage() {
 
         {/* 이용 안내 */}
         <div className="mt-8 bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-8 text-white shadow-2xl">
-          <h3 className="text-2xl font-black mb-[15px] tracking-tight flex items-center gap-3">
-            <span className="text-3xl">ℹ️</span>
+          <h3 className="text-3xl font-black mb-[20px] tracking-tight flex items-center gap-3 text-emerald-400 relative -top-[6px]">
+            <span className="text-4xl">ℹ️</span>
             서비스 이용 안내
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/10">
-              <div className="text-5xl mb-6 drop-shadow-xl">📍</div>
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+              <div className="text-5xl mb-6 drop-shadow-2xl">📍</div>
               <h4 className="font-black text-2xl mb-3 tracking-tight">위치 기반 서비스</h4>
-              <p className="text-lg opacity-90 font-medium leading-relaxed tracking-tight">
+              <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                 현재 위치를 기반으로 가장 가까운 흡연부스를 자동으로 찾아드립니다.
               </p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/10">
-              <div className="text-5xl mb-6 drop-shadow-xl">🗺️</div>
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+              <div className="text-5xl mb-6 drop-shadow-2xl">🗺️</div>
               <h4 className="font-black text-2xl mb-3 tracking-tight">전국 커버리지</h4>
-              <p className="text-lg opacity-90 font-medium leading-relaxed tracking-tight">
+              <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                 전국 {stats.total}개 이상의 흡연부스 위치 정보를 제공합니다.
               </p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/10">
-              <div className="text-5xl mb-6 drop-shadow-xl">⏱️</div>
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+              <div className="text-5xl mb-6 drop-shadow-2xl">⏱️</div>
               <h4 className="font-black text-2xl mb-3 tracking-tight">실시간 업데이트</h4>
-              <p className="text-lg opacity-90 font-medium leading-relaxed tracking-tight">
+              <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                 위치 정보는 실시간으로 업데이트되어 정확한 정보를 제공합니다.
               </p>
             </div>

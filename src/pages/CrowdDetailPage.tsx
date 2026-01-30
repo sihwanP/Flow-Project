@@ -668,26 +668,29 @@ export default function CrowdDetailPage() {
         {/* 이용 안내 */}
         <FadeInSection className="mt-8">
           <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-8 text-white">
-            <h3 className="text-2xl font-black mb-6">서비스 이용 안내</h3>
+            <h3 className="text-3xl font-black mb-8 flex items-center gap-3 text-indigo-400 relative -top-[6px]">
+              <span className="text-4xl">ℹ️</span>
+              서비스 이용 안내
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl mb-4">📊</div>
-                <h4 className="font-bold text-lg mb-2">실시간 데이터</h4>
-                <p className="text-sm opacity-100 font-medium">
+              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+                <div className="text-5xl mb-6 drop-shadow-2xl">📊</div>
+                <h4 className="font-black text-2xl mb-3 tracking-tight">실시간 데이터</h4>
+                <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                   1초 단위로 실시간 업데이트되는 정확한 혼잡도 정보를 제공합니다.
                 </p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl mb-4">🗺️</div>
-                <h4 className="font-bold text-lg mb-2">전국 커버리지</h4>
-                <p className="text-sm opacity-100 font-medium">
+              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+                <div className="text-5xl mb-6 drop-shadow-2xl">🗺️</div>
+                <h4 className="font-black text-2xl mb-3 tracking-tight">전국 커버리지</h4>
+                <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                   서울, 부산, 대구 등 전국 주요 도시의 혼잡도를 확인할 수 있습니다.
                 </p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <div className="text-4xl mb-4">⏰</div>
-                <h4 className="font-bold text-lg mb-2">최적 시간 추천</h4>
-                <p className="text-sm opacity-100 font-medium">
+              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 flex flex-col items-center justify-center text-center min-h-[220px] transition-transform hover:scale-[1.02] cursor-default border border-white/20">
+                <div className="text-5xl mb-6 drop-shadow-2xl">⏰</div>
+                <h4 className="font-black text-2xl mb-3 tracking-tight">최적 시간 추천</h4>
+                <p className="text-lg font-black leading-relaxed tracking-tight text-white">
                   24시간 데이터를 분석하여 가장 여유로운 방문 시간을 추천해드립니다.
                 </p>
               </div>

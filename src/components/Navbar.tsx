@@ -7,7 +7,7 @@ import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
-  const { theme } = useTheme();
+  useTheme();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
   const [menuOpen, setMenuOpen] = useState(window.innerWidth >= 1280);
   const [isScrolled, setIsScrolled] = useState(false);
