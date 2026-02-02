@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import ServicePage from "./pages/ServicePage";
 import SmokingBoothDetailPage from "./pages/SmokingBoothDetailPage";
@@ -10,7 +10,7 @@ import CrowdMapPage from "./pages/CrowdMapPage";
 export default function App() {
   return (
     <>
-      <BrowserRouter basename="/Flow-Project">
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<ServicePage />} />
@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/smoking-map" element={<SmokingMapPage />} />
           <Route path="/crowd-map" element={<CrowdMapPage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
