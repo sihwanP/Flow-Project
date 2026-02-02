@@ -10,7 +10,7 @@ import CrowdMapPage from "./pages/CrowdMapPage";
 export default function App() {
   return (
     <>
-      <BrowserRouter basename="/flow">
+      <BrowserRouter basename="/Flow-Project">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<ServicePage />} />
