@@ -10,10 +10,7 @@ declare global {
   }
 }
 
-interface SmokingBoothProps {
-  onShowMap: () => void;
-  onShowCrowdMap: () => void;
-}
+interface SmokingBoothProps {}
 
 interface SmokingCard {
   id: string;
@@ -22,7 +19,7 @@ interface SmokingCard {
   onClick: () => void;
 }
 
-export default function SmokingBooth({ onShowMap, onShowCrowdMap }: SmokingBoothProps) {
+export default function SmokingBooth({}: SmokingBoothProps) {
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
@@ -43,13 +40,13 @@ export default function SmokingBooth({ onShowMap, onShowCrowdMap }: SmokingBooth
       id: "smoking-location",
       title: "내 주변 흡연부스 위치",
       description: "전국 300개 이상의 흡연부스 위치를 실시간으로 확인하세요. 가장 가까운 흡연부스를 빠르게 찾아 불필요한 이동 시간을 줄이고, 더 쾌적한 환경을 경험할 수 있습니다.",
-      onClick: onShowMap,
+      onClick: () => navigate("/smoking-map"),
     },
     {
       id: "crowd-monitoring",
       title: "실시간 혼잡도 모니터링",
       description: "전국 주요 지역의 실시간 인구 밀집도를 확인하고 최적의 방문 시간을 찾으세요. 데이터 기반 분석으로 혼잡한 장소를 피하고 쾌적한 환경에서 더 나은 경험을 만들어보세요.",
-      onClick: onShowCrowdMap,
+      onClick: () => navigate("/crowd-map"),
     },
   ];
 

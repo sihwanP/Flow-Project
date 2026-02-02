@@ -1,57 +1,54 @@
 /* global console */
 import ftp from 'basic-ftp';
-
+import path from 'path';
 
 async function uploadToFTP() {
   const client = new ftp.Client();
   client.ftp.verbose = true;
 
   try {
-    console.log('FTP 서버에 연결 중...');
+    console.log('Connecting to Cafe24 FTP (tlghks132.mycafe24.com)...');
     await client.access({
-      host: '112.175.185.144',
-      port: 21,
+      host: 'tlghks132.mycafe24.com',
       user: 'tlghks132',
-      password: 'Ghks3928*',
+      password: 'Ghks3928**',
       secure: false
     });
 
-    console.log('FTP 연결 성공!');
-    console.log('원격 경로로 이동 중: /html');
+    console.log('✅ Connected!');
 
-    // 원격 디렉토리로 이동
-    await client.cd('/html');
+    // 1. Create a timestamped backup directory
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const backupDir = `_backup_${timestamp}`;
+    console.log(`Creating backup directory: ${backupDir}`);
+    await client.ensureDir(backupDir);
+    await client.cd('/'); // Go back to root
 
-    // 기존 파일 정리 (선택사항)
-    console.log('기존 파일 정리 중...');
-    try {
-      const files = await client.list();
-      for (const file of files) {
-        try {
-          if (file.isDirectory) {
-            await client.removeDir(file.name);
-          } else {
-            await client.remove(file.name);
-          }
-        } catch (_e) {
-          console.log(`파일 삭제 실패: ${file.name}`);
-        }
+    // 2. Move existing files to backup
+    console.log('Moving existing files to backup...');
+    const files = await client.list();
+    
+    for (const file of files) {
+      if (file.name === backupDir || file.name === '.' || file.name === '..') continue;
+      
+      try {
+        console.log(`Moving ${file.name} to ${backupDir}/${file.name}...`);
+        await client.rename(file.name, `${backupDir}/${file.name}`);
+      } catch (e) {
+        console.log(`⚠️ Failed to move ${file.name}:`, e.message);
       }
-    } catch (err) {
-      console.log('FTP Cleanup skipped or failed:', err);
     }
 
-    try {
-      console.log('Uploading files...');
-      await client.uploadFromDir('dist');
-    } catch (err) {
-      console.log('FTP Upload failed:', err);
-    }
+    // 3. Upload new files from 'dist'
+    console.log('Uploading new files from dist...');
+    await client.uploadFromDir('dist');
 
-    console.log('✅ 업로드 완료!');
-    console.log('접속 URL: http://tlghks132.dothome.co.kr');
+    console.log('✅ Deployment successful!');
+    console.log('Backup location:', `/${backupDir}`);
+    console.log('URL:', 'http://tlghks132.mycafe24.com');
+
   } catch (err) {
-    console.error('❌ 업로드 실패:', err);
+    console.error('❌ Deployment failed:', err);
   }
 
   client.close();

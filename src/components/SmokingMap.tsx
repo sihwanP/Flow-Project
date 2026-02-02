@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { getNationalSmokingBooths } from "../services/smokingBoothService";
 import { calculateDistance } from "../utils/pathfinding";
+import ThemeToggle from "./ThemeToggle";
 import type { SmokingBooth } from "../services/smokingBoothService";
 
 declare global {
@@ -283,8 +284,17 @@ export default function SmokingMap({ onBack }: SmokingMapProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full max-w-[1400px] mx-auto min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
+    <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100 dark:bg-slate-950 p-4 sm:p-6 md:p-8 transition-colors duration-300">
       {/* 1. 상단 검색 바 영역 (지도 프레임 밖) */}
+
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle
+            transparent={false}
+            className="shadow-xl shadow-black/5 border border-white/60 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur-xl text-slate-900 dark:text-white rounded-full w-12 h-12 flex items-center justify-center"
+        />
+      </div>
+
+      <div className="w-full max-w-[1400px]">
       <div className="w-full mb-4 sm:mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
         <div>
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 dark:text-white">
@@ -424,6 +434,7 @@ export default function SmokingMap({ onBack }: SmokingMapProps) {
         >
           홈으로 돌아가기
         </button>
+      </div>
       </div>
     </div>
   );

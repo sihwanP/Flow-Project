@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 declare global {
   interface Window {
@@ -460,17 +461,24 @@ export default function CrowdMap({ onBack, initialKeyword }: CrowdMapProps) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 p-4 md:p-6">
-      {/* (Header omitted for brevity but preserved) */}
+    <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-4 md:p-6 transition-colors duration-300">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle 
+            transparent={false} 
+            className="shadow-xl shadow-black/5 border border-white/60 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur-xl text-slate-900 dark:text-white rounded-full w-12 h-12 flex items-center justify-center" 
+        />
+      </div>
+
+      {/* 헤더 */}
       <div className="w-full max-w-[1400px] mb-6">
-        <div className="bg-white p-6 rounded-2xl shadow-xl border-2 border-indigo-100">
+        <div className="bg-white dark:bg-slate-900 px-6 py-[19px] rounded-2xl shadow-xl border-2 border-indigo-100 dark:border-indigo-900/30">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div className="flex-1">
               <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 전국 실시간 혼잡도 모니터링
               </h1>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg">
+              <div className="flex flex-col items-start mb-4 mt-[23px]">
+                <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg mb-[16px]">
                   <p className="text-xs font-black opacity-80">실시간 기준</p>
                   <p className="text-lg font-black">
                     {currentTime.toLocaleDateString("ko-KR", { month: "long", day: "numeric", weekday: "short" })} {currentTime.toLocaleTimeString("ko-KR")}
@@ -507,10 +515,10 @@ export default function CrowdMap({ onBack, initialKeyword }: CrowdMapProps) {
       {/* 이용 가이드 */}
       <div className="w-full max-w-[1400px] mb-6">
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-2xl shadow-xl border-2 border-indigo-200 dark:border-indigo-900/30">
-          <h2 className="text-2xl font-black text-white mb-4 flex items-center gap-2">
+          <h2 className="text-2xl font-black text-white mb-[16px] flex items-center gap-[16px] pl-4">
             💡 이용 가이드
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[15px]">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
               <div className="text-white font-black mb-2 flex items-center gap-2">
                 <span className="text-xl">🔍</span>
@@ -552,84 +560,76 @@ export default function CrowdMap({ onBack, initialKeyword }: CrowdMapProps) {
             전국 주요 지역의 시간대별 평균 인구 밀집도를 확인하세요. 현재 시간대가 강조 표시됩니다.
           </p>
 
-          <div className="space-y-2">
-            {(() => {
-              const currentHour = new Date().getHours();
+          <div className="relative w-full h-80 bg-gray-50 dark:bg-slate-800/50 rounded-xl p-4 sm:p-6 overflow-hidden">
+             {/* Y축 그리드 라인 (배경) */}
+             <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none opacity-30">
+                <div className="w-full h-px bg-slate-300 dark:bg-slate-600 border-t border-dashed"></div>
+                <div className="w-full h-px bg-slate-300 dark:bg-slate-600 border-t border-dashed"></div>
+                <div className="w-full h-px bg-slate-300 dark:bg-slate-600 border-t border-dashed"></div>
+                <div className="w-full h-px bg-slate-300 dark:bg-slate-600 border-t border-dashed"></div>
+             </div>
 
-              // 각 시간대별로 전국 평균 계산
-              const hourlyAverages = Array.from({ length: 24 }, (_, hour) => {
-                // 모든 주요 지역의 해당 시간 인구수 평균 계산
-                const avgPopulation = Math.round(
-                  majorLocations.reduce((sum) => {
-                    const hourlyData = generateHourlyData();
-                    return sum + hourlyData[hour].population;
-                  }, 0) / majorLocations.length
-                );
+             <div className="flex h-full items-end justify-between gap-1 sm:gap-2 overflow-x-auto pb-6 custom-scrollbar">
+              {(() => {
+                const currentHour = new Date().getHours();
+                
+                // 각 시간대별로 전국 평균 계산
+                const hourlyAverages = Array.from({ length: 24 }, (_, hour) => {
+                  const avgPopulation = Math.round(
+                    majorLocations.reduce((sum) => {
+                      const hourlyData = generateHourlyData(); // 주의: 랜덤이라 매번 값이 다를 수 있음. 실제로는 useMemo로 고정하는 것이 좋으나 기존 로직 유지
+                      return sum + hourlyData[hour].population;
+                    }, 0) / majorLocations.length
+                  );
 
-                // 레벨 판정
-                let level: "매우혼잡" | "혼잡" | "보통" | "여유";
-                let bgColor: string;
-                let textColor: string;
+                  let level: "매우혼잡" | "혼잡" | "보통" | "여유";
+                  let bgClass: string;
 
-                if (avgPopulation > 4000) {
-                  level = "매우혼잡";
-                  bgColor = "bg-red-500";
-                  textColor = "text-red-700";
-                } else if (avgPopulation > 2500) {
-                  level = "혼잡";
-                  bgColor = "bg-orange-500";
-                  textColor = "text-orange-700";
-                } else if (avgPopulation > 1000) {
-                  level = "보통";
-                  bgColor = "bg-yellow-400";
-                  textColor = "text-yellow-700";
-                } else {
-                  level = "여유";
-                  bgColor = "bg-green-500";
-                  textColor = "text-green-700";
-                }
+                  if (avgPopulation > 4000) { level = "매우혼잡"; bgClass = "bg-red-500"; }
+                  else if (avgPopulation > 2500) { level = "혼잡"; bgClass = "bg-orange-500"; }
+                  else if (avgPopulation > 1000) { level = "보통"; bgClass = "bg-yellow-400"; }
+                  else { level = "여유"; bgClass = "bg-green-500"; }
 
-                return { hour, avgPopulation, level, bgColor, textColor };
-              });
+                  return { hour, avgPopulation, level, bgClass };
+                });
 
-              // 최대값 찾기 (스케일링용)
-              const maxPopulation = Math.max(...hourlyAverages.map(h => h.avgPopulation));
+                const maxPopulation = Math.max(...hourlyAverages.map(h => h.avgPopulation), 5000); // 최소 스케일 5000 보장
 
-              return hourlyAverages.map(({ hour, avgPopulation, level, bgColor, textColor }) => {
-                const isCurrentHour = hour === currentHour;
-                const barWidth = (avgPopulation / maxPopulation) * 100;
+                return hourlyAverages.map(({ hour, avgPopulation, level, bgClass }) => {
+                  const isCurrentHour = hour === currentHour;
+                  const heightPercent = Math.max(15, (avgPopulation / maxPopulation) * 100); // 최소 높이 15%
 
-                return (
-                  <div
-                    key={hour}
-                    className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isCurrentHour
-                      ? "bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/40 dark:to-purple-900/40 ring-2 ring-indigo-500 shadow-md scale-105"
-                      : "bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700"
-                      }`}
-                  >
-                    <div className="w-16 text-sm font-black text-slate-800 dark:text-slate-200 flex items-center gap-1">
-                      {hour.toString().padStart(2, "0")}:00
-                      {isCurrentHour && <span className="text-indigo-600 dark:text-indigo-400">●</span>}
-                    </div>
+                  return (
+                    <div key={hour} className="flex-1 min-w-[30px] sm:min-w-[40px] flex flex-col items-center group relative h-full justify-end">
+                      {/* 툴팁 (Hover) */}
+                      <div className="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-slate-800 dark:bg-white text-white dark:text-slate-900 text-[10px] sm:text-xs rounded py-1 px-2 pointer-events-none whitespace-nowrap font-bold shadow-lg">
+                        {avgPopulation.toLocaleString()}명 ({level})
+                        {/* 말풍선 화살표 */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-800 dark:border-t-white"></div>
+                      </div>
 
-                    <div className="flex-1 bg-gray-200 rounded-full h-6 overflow-hidden relative">
-                      <div
-                        className={`h-full ${bgColor} transition-all duration-500 flex items-center justify-end pr-2`}
-                        style={{ width: `${barWidth}%` }}
+                      {/* 바 Chart */}
+                      <div 
+                        className={`w-full max-w-[24px] sm:max-w-[36px] rounded-t-lg transition-all duration-500 relative ${bgClass} ${isCurrentHour ? 'ring-4 ring-indigo-300 dark:ring-indigo-700 z-10 scale-110 shadow-lg' : 'opacity-70 hover:opacity-100'}`}
+                        style={{ height: `${heightPercent}%` }}
                       >
-                        <span className="text-xs font-semibold text-white drop-shadow">
-                          {avgPopulation.toLocaleString()}명
-                        </span>
+                         {/* 바 내부 텍스트 (공간 충분할 때 표시) */}
+                         {heightPercent > 30 && (
+                            <span className="absolute bottom-2 left-1/2 -translate-x-1/2 -rotate-90 text-[9px] sm:text-[10px] font-black text-white whitespace-nowrap opacity-80">
+                               {avgPopulation > 1000 ? `${(avgPopulation/1000).toFixed(1)}k` : avgPopulation}
+                            </span>
+                         )}
+                      </div>
+
+                      {/* X축 시간 라벨 */}
+                      <div className={`mt-3 text-[10px] sm:text-xs font-black ${isCurrentHour ? 'text-indigo-600 dark:text-indigo-400 scale-110' : 'text-slate-500 dark:text-slate-400'}`}>
+                        {hour === 0 ? "24" : hour}시
                       </div>
                     </div>
-
-                    <div className={`w-20 text-xs font-black ${textColor}`}>
-                      {level}
-                    </div>
-                  </div>
-                );
-              });
-            })()}
+                  );
+                });
+              })()}
+             </div>
           </div>
 
           <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800/30">

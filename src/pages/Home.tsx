@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
-import SmokingMap from "../components/SmokingMap";
-import CrowdMap from "../components/CrowdMap";
+
 import Hero from "../components/Hero";
 import SmokingBooth from "../components/SmokingBooth";
 import Crowd from "../components/Crowd";
@@ -17,9 +16,7 @@ import ServiceVideo from "../components/ServiceVideo";
 import CrowdContent from "../components/CrowdContent";
 
 export default function Home() {
-  const [showMap, setShowMap] = useState(false);
-  const [showCrowdMap, setShowCrowdMap] = useState(false);
-  const [crowdSearchKeyword, setCrowdSearchKeyword] = useState<string>("");
+
   const [isJumping, setIsJumping] = useState(false);
   const isInitialMount = useRef(true);
 
@@ -70,29 +67,10 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  // 지도를 닫을 때 특정 섹션으로 복귀하는 핸들러
-  const handleCloseSmokingMap = () => {
-    setShowMap(false);
-    setTimeout(() => {
-      document
-        .getElementById("section-location")
-        ?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
-  const handleCloseCrowdMap = () => {
-    setShowCrowdMap(false);
-    setCrowdSearchKeyword(""); // 검색어 초기화
-    setTimeout(() => {
-      document
-        .getElementById("section-crowd")
-        ?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
 
 
-  if (showMap) return <SmokingMap onBack={handleCloseSmokingMap} />;
-  if (showCrowdMap) return <CrowdMap onBack={handleCloseCrowdMap} initialKeyword={crowdSearchKeyword} />;
+
+
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden">
@@ -132,7 +110,7 @@ export default function Home() {
 
         {/* SmokingBooth 섹션 */}
         <section id="section-location" className="relative w-full page-section min-h-[500px]">
-          <SmokingBooth onShowMap={() => setShowMap(true)} onShowCrowdMap={() => setShowCrowdMap(true)} />
+          <SmokingBooth />
           <SectionDivider type="slant" position="bottom" color="text-green-100/60 dark:text-green-900/30" />
         </section>
 
